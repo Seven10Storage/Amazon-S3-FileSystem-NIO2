@@ -14,6 +14,7 @@ import static com.upplication.s3fs.AmazonS3Factory.PROXY_USERNAME;
 import static com.upplication.s3fs.AmazonS3Factory.PROXY_WORKSTATION;
 import static com.upplication.s3fs.AmazonS3Factory.REQUEST_METRIC_COLLECTOR_CLASS;
 import static com.upplication.s3fs.AmazonS3Factory.SECRET_KEY;
+import static com.upplication.s3fs.AmazonS3Factory.SIGNER_OVERRIDE;
 import static com.upplication.s3fs.AmazonS3Factory.SOCKET_RECEIVE_BUFFER_SIZE_HINT;
 import static com.upplication.s3fs.AmazonS3Factory.SOCKET_SEND_BUFFER_SIZE_HINT;
 import static com.upplication.s3fs.AmazonS3Factory.SOCKET_TIMEOUT;
@@ -205,7 +206,7 @@ public class S3FileSystemProvider extends FileSystemProvider {
             env = new HashMap<>();
         for (String key : new String[]{ACCESS_KEY, SECRET_KEY, REQUEST_METRIC_COLLECTOR_CLASS, CONNECTION_TIMEOUT, MAX_CONNECTIONS, MAX_ERROR_RETRY, PROTOCOL, PROXY_DOMAIN,
                 PROXY_HOST, PROXY_PASSWORD, PROXY_PORT, PROXY_USERNAME, PROXY_WORKSTATION, SOCKET_SEND_BUFFER_SIZE_HINT, SOCKET_RECEIVE_BUFFER_SIZE_HINT, SOCKET_TIMEOUT,
-                USER_AGENT, AMAZON_S3_FACTORY_CLASS}) {
+                USER_AGENT, SIGNER_OVERRIDE, AMAZON_S3_FACTORY_CLASS}) {
             overloadProperty(props, env, key);
         }
     }

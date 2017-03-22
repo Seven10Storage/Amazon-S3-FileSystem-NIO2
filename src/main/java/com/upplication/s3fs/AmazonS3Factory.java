@@ -30,6 +30,7 @@ public abstract class AmazonS3Factory {
     public static final String PROXY_PORT = "s3fs_proxy_port";
     public static final String PROXY_USERNAME = "s3fs_proxy_username";
     public static final String PROXY_WORKSTATION = "s3fs_proxy_workstation";
+    public static final String SIGNER_OVERRIDE = "s3fs_signer_override";
     public static final String SOCKET_SEND_BUFFER_SIZE_HINT = "s3fs_socket_send_buffer_size_hint";
     public static final String SOCKET_RECEIVE_BUFFER_SIZE_HINT = "s3fs_socket_receive_buffer_size_hint";
     public static final String SOCKET_TIMEOUT = "s3fs_socket_timeout";
@@ -107,6 +108,8 @@ public abstract class AmazonS3Factory {
             clientConfiguration.setProxyUsername(props.getProperty(PROXY_USERNAME));
         if (props.getProperty(PROXY_WORKSTATION) != null)
             clientConfiguration.setProxyWorkstation(props.getProperty(PROXY_WORKSTATION));
+        if (props.getProperty(SIGNER_OVERRIDE) != null)
+            clientConfiguration.setSignerOverride(props.getProperty(SIGNER_OVERRIDE));
         int socketSendBufferSizeHint = 0;
         if (props.getProperty(SOCKET_SEND_BUFFER_SIZE_HINT) != null)
             socketSendBufferSizeHint = Integer.parseInt(props.getProperty(SOCKET_SEND_BUFFER_SIZE_HINT));

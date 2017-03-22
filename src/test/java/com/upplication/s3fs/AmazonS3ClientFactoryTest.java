@@ -15,6 +15,7 @@ import static com.upplication.s3fs.AmazonS3Factory.PROXY_USERNAME;
 import static com.upplication.s3fs.AmazonS3Factory.PROXY_WORKSTATION;
 import static com.upplication.s3fs.AmazonS3Factory.REQUEST_METRIC_COLLECTOR_CLASS;
 import static com.upplication.s3fs.AmazonS3Factory.SECRET_KEY;
+import static com.upplication.s3fs.AmazonS3Factory.SIGNER_OVERRIDE;
 import static com.upplication.s3fs.AmazonS3Factory.SOCKET_RECEIVE_BUFFER_SIZE_HINT;
 import static com.upplication.s3fs.AmazonS3Factory.SOCKET_SEND_BUFFER_SIZE_HINT;
 import static com.upplication.s3fs.AmazonS3Factory.SOCKET_TIMEOUT;
@@ -54,6 +55,7 @@ public class AmazonS3ClientFactoryTest {
         props.setProperty(PROXY_PORT, "12345");
         props.setProperty(PROXY_USERNAME, "proxy_username");
         props.setProperty(PROXY_WORKSTATION, "what.does.this.do.localhost");
+        props.setProperty(SIGNER_OVERRIDE, "Version0");
         props.setProperty(SOCKET_SEND_BUFFER_SIZE_HINT, "48000");
         props.setProperty(SOCKET_RECEIVE_BUFFER_SIZE_HINT, "49000");
         props.setProperty(SOCKET_TIMEOUT, "30");
@@ -75,6 +77,7 @@ public class AmazonS3ClientFactoryTest {
         assertEquals(12345, clientConfiguration.getProxyPort());
         assertEquals("proxy_username", clientConfiguration.getProxyUsername());
         assertEquals("what.does.this.do.localhost", clientConfiguration.getProxyWorkstation());
+        assertEquals("Version0", clientConfiguration.getSignerOverride());
         assertEquals(48000, clientConfiguration.getSocketBufferSizeHints()[0]);
         assertEquals(49000, clientConfiguration.getSocketBufferSizeHints()[1]);
         assertEquals(30, clientConfiguration.getSocketTimeout());
@@ -104,6 +107,7 @@ public class AmazonS3ClientFactoryTest {
         assertEquals(-1, clientConfiguration.getProxyPort());
         assertNull(clientConfiguration.getProxyUsername());
         assertNull(clientConfiguration.getProxyWorkstation());
+        assertNull(clientConfiguration.getSignerOverride());
         assertEquals(0, clientConfiguration.getSocketBufferSizeHints()[0]);
         assertEquals(0, clientConfiguration.getSocketBufferSizeHints()[1]);
         assertEquals(50000, clientConfiguration.getSocketTimeout());
